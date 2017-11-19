@@ -1,0 +1,105 @@
+<!Doctype html>
+<!--   
+Name: Sony Thach 
+Email: sony_thach@student.uml.edu   
+Comp.4610, GUI Programming I   
+Description: Assignment 5
+-->
+<html lang="en">
+
+<head>
+    <title>Assignment 5</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/Assignment5.js"></script>
+    <script src="js/parsley.js"></script>
+    <!-- include es5-shim libraries so that Parsley can work in Internet Explorer 8 --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-shim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.34.2/es6-shim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.34.2/es6-sham.min.js"></script>
+<script src="https://wzrd.in/standalone/es7-shim@latest"></script>
+    <link rel="stylesheet" type="text/css" href="css/Assignment5.css">
+</head>
+
+<body>
+<!--
+Form to ask for how many values of Prices and Miles Per Gallon user will be entering. Also asks user to choose if they are financing the cars or
+leasing.
+-->
+    <form id="rowColumnsForm" >
+        <label for="numberOfColumns">How many different car prices would you like to enter?</label>
+        <input id="numberOfColumns"  type="number" name="prices" required data-parsley-type="integer" min="1">
+        <br>
+        <label for="numberOfRows">How many different miles per gallons values would you like to enter?</label>
+        <input id="numberOfRows" type="number" name="milesPerGallons" required data-parsley-type="integer" min="1"><br>
+        <label> Select Car Purchase Option:</label><br>
+        <input type="radio" name="purchase_option" id="finance" required data-parsley-multiple="purchaseOptiondCheck" data-parsley-mincheck="1">Finance
+        <input type="radio" name="purchase_option" id="lease" required data-parsley-multiple="purchaseOptiondCheck" data-parsley-mincheck="1"  >Lease<br>
+        <button type="submit" id="submit_table_dimensions" value="validate">Submit</button><br>
+    </form>
+<!--
+	Form asking user to input prices which will be done dynamically using javascript.
+-->
+    <form id="priceEntryForm"></form>
+<!--
+	Form asking user to input miles per gallon values which will be done dynamically using javascript.
+
+-->
+    <form id="mpgEntryForm"></form>
+<!--
+	Form asking user inputs for financing option.
+-->
+    <form id="financeForm">
+        <label for="estimatedMilesDriven1">Estimated Miles Driven Per Year:</label>
+        <input id="estimatedMilesDriven1" type="number" name="Miles" required data-parsley-type="integer" min="1">
+        <br>
+        <label for="costPerGallon1">Cost Per Gallon Of Gas: $</label>
+        <input id="costPerGallon1"   required data-parsley-pattern="\d+\.?\d{0,2}$" min=".01">
+        <br>
+        <label for="interestRate1">Interest Rate:%</label>
+        <input id="interestRate1" type="number" name="Interest Rate" required data-parsley-type="integer" min="0">
+        <br>
+        <label for="monthsOfPayment1">Months Of Payment: </label>
+        <input id="monthsOfPayment1" type="number" name="Monthly Payment" required data-parsley-type="integer" min="1">
+        <br>
+        <button type="submit" id="calculateButton1" value="validate">
+                Calculate
+        </button>
+    </form>
+<!--
+	Form asking user inputs for leasing option.
+-->
+    <form id="leaseForm">
+        <label for="estimatedMilesDriven2">Estimated Miles Driven Per Year:</label>
+        <input id="estimatedMilesDriven2" type="number" name="Miles Per Year" required data-parsley-type="integer" min="1" >
+        <br>
+        <label for="milesDrivenAllowed">Miles Allowed Per Year:</label>
+        <input id="milesDrivenAllowed" type="number" name="Miles Allowed" required data-parsley-type="integer" min="1000">
+        <br>
+        <label for="costPerGallon2">Cost Per Gallon Of Gas: $</label>
+        <input id="costPerGallon2"   required data-parsley-type="number" data-parsley-pattern="\d+\.?\d{0,2}$" min=".01">
+        <br>
+        <label for="leaseMonthlyCost">Leasing Cost Per Month: $</label>
+        <input id="leaseMonthlyCost" type="number" name="Leasing Cost Per Month"  required data-parsley-type="integer" data-parsley-pattern="^\d+\.?\d{0,2}$" min="50">
+        <br>
+        <label for="costPerAdditionalMile">Cost Per Additional Mile Exceeding Allowed Miles: $</label>
+        <input id="costPerAdditionalMile" type="number" name="Cost Per Additional Mile"  required data-parsley-type="number" data-parsley-pattern="^\d+\.?\d{0,2}$" min="1">
+        <br>
+        <label for="monthsOfPayment2">Months Of Payment:</label>
+        <input id="monthsOfPayment2" type="number" name="Months Of Payment" required data-parsley-type="integer" min="1" >
+        <br>
+        <button type="submit" id="calculateButton2" value="validate">
+                Calculate
+        </button>
+    </form>
+<!--
+	Tables showing comparisons of cost per month and per mile for different combinations of miles per gallons and prices.
+-->
+    <table id="financeTable">
+    </table>
+    <table id="leaseTable">
+    </table>
+</body>
+
+</html>

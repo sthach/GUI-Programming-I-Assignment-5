@@ -1,0 +1,42 @@
+/*
+Name: Sony Thach 
+Email: sony_thach@student.uml.edu   
+Comp.4610, GUI Programming I   
+Description: Assignment 5
+*/
+
+/*
+set left margin for all Text
+*/
+
+* {
+    margin-left: 32px;
+}
+
+/*
+set top and bottom margins to create seperation between forms
+*/
+
+#financeForm,
+#leaseForm {
+    display: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 75%;
+}
+
+#rowColumnsForm {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/*
+set border for tables
+*/
+
+table,
+td,
+th {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
